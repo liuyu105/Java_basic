@@ -32,7 +32,7 @@ public class StringDemo2 {
 }
 ```
 
-![1580910773076](C:\Users\梦晨涌京\AppData\Roaming\Typora\typora-user-images\1580910773076.png)
+![image](https://github.com/liuyu105/Java_basic/blob/master/images/1580910773076.png)
 
 ## 3.String的构造方法
 
@@ -116,3 +116,8 @@ public class Main {
     }
 }
 
+<<<<<<< HEAD
+=======
+- String-->StringBuilder
+  StringBuilder strb=new StringBuilder(str); //StringBuilder(String str):通过构造方法就可以完成转换
+>>>>>>> df567eea1408ab5c98e5c3153f7fa4720118a5fc
