@@ -47,6 +47,15 @@ public class StringDemo2 {
   boolean startsWith(String str):判断字符串对象是否以指定的str开头
   boolean endsWith(String str):判断字符串对象是否以指定的str结尾
 
+`String`还提供了`isEmpty()`和`isBlank()`来判断字符串是否为空和空白字符串：
+
+```
+"".isEmpty(); // true，因为字符串长度为0
+"  ".isEmpty(); // false，因为字符串长度不为0
+"  \n".isBlank(); // true，因为只包含空白字符
+" Hello ".isBlank(); // false，因为包含非空白字符
+```
+
 ## 5.String类的获取功能
 
   int length():获取字符串的长度，其实也就是字符个数
@@ -65,55 +74,45 @@ char[] toCharArray():把字符串转换为字符数组
 String toLowerCase():把字符串转换为小写字符串
 String toUpperCase():把字符串转换为大写字符串
 
-## 7.其他功能
+## 7.去除首尾空白字符
 
-​       String s2 = "  hello  ";
-​		// 去除字符串两端空格String trim()
+（1） 空白字符包括空格，`\t`，`\r`，`\n` 
+
+​        String s2 = "  hello  ";
+​		// 去除字符串两端空格**String trim()**
 ​		System.out.println(s2.trim());
 
-​	// 按照指定符号分割字符串String[] split(String str)
+（2） 另一个`strip()`方法也可以移除字符串首尾空白字符。它和`trim()`不同的是，类似中文的空格字符`\u3000`也会被移除 
+
+如："\u3000Hello\u3000".strip(); // "Hello"
+
+## 8.分割字符串
+
+// 按照指定符号分割字符串String[] split(String str)
 ​	String s3 = "aa,bb,cc";
 ​	String[] arr = s3.split(",");
 ​	for (int i = 0; i < arr.length; i++) {
 ​		System.out.println(arr[i]);
 ​	}
 
-## 8.StringBuilder
+## 9.拼接字符串
 
-（1）StringBuilder：是一个可变的字符串。字符串缓冲区类。
+拼接字符串使用静态方法`join()`，它用指定的字符串连接字符串数组：
 
-String和StringBuilder的区别：
+```
+String[] arr = {"A", "B", "C"};
+String s = String.join("***", arr); // "A***B***C"
+```
 
-​       String的内容是固定的
+## 10.格式化字符串
 
-​       StringBuilder的内容是可变的
+字符串提供了`formatted()`方法和`format()`静态方法，可以传入其他参数，替换占位符，然后生成新的字符串：
 
-（2）+=拼接字符串耗费内存原因:
+public class Main {
+    public static void main(String[] args) {
+        String s = "Hi %s, your score is %d!";
+        System.out.println(s.formatted("Alice", 80));
+        System.out.println(String.format("Hi %s, your score is %.2f!", "Bob", 59.5));
+    }
+}
 
-每次拼接都会产生新的字符串对象，而利用StringBuilder来拼接字符串自始至终用的都是同一个StringBuilder容器
-
-![1580911779954](C:\Users\梦晨涌京\AppData\Roaming\Typora\typora-user-images\1580911779954.png)
-
-（3）常用方法
-
-A:构造方法:
-
-​    StringBuilder()
-
-B:成员方法:
-
-   public int capacity():返回当前容量 (理论值)
-
-​    public int length():返回长度(已经存储的字符个数)
-
-​    public StringBuilder append(任意类型):添加数据，并返回自身对象
-
-​    public StringBuilder reverse():反转功能
-
-（4）String与StringBuilder相互转换
-
-- StringBuilder-->String
-  String str=stringBuilder.toString(); //public String toString():通过toString()就可以实现转换
-
-- String-->StringBuilder
-  StringBuilder strb=new StringBuilder(str); //StringBuilder(String str):通过构造方法就可以完成转换
