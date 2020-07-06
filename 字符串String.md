@@ -32,7 +32,7 @@ public class StringDemo2 {
 }
 ```
 
-![image](https://github.com/liuyu105/Java_basic/blob/master/images/1580910773076.png)
+![image](images/1580910773076.png)
 
 ## 3.String的构造方法
 
